@@ -3,3 +3,4 @@ Integrantes: Francisca Santana, Gonzalo Torrejón y Bastián Icarte.
 //descripcion proyecto
 //imagen explicativa
 //instrucciones de instalación
+caca
