@@ -1,0 +1,30 @@
+{% extends 'moledordepasas/base.html' %}
+
+{% load static %}
+{% block content %}
+<table border="1">
+    <thead>
+        <h1>Pasitas</h1>
+    </thead> 
+    <tbody>
+        <tr>
+            <td>Id</td>
+            <td>Name</td>
+            <td>Surname</td>
+            <td>Email</td>
+        </tr>
+
+        {% for c in accounts %}
+        <tr>
+            <td>{{c.id}}</td>
+            <td>{{c.name}}</td>
+            <td>{{c.surname}}</td>
+            <td>{{c.email}}</td>
+            <td><a href="change/{{c.id}}">Cambiar</a></td>
+            <td><a href="delete/{{c.id}}">Cambiar</a></td>
+        </tr>
+        {% endfor %}
+    </tbody>        
+</table>
+{% endblock %}
+

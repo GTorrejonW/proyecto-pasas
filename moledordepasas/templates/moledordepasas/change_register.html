@@ -1,0 +1,19 @@
+{% extends 'moledordepasas/base.html' %}
+
+{% load static %}
+{% block content %}
+<form action="change_register.html"{{account.id}} method="post">
+    {% csrf_token %}   
+    Name:<br>
+    <input name='name' value=""{{account.name}}>
+    <br><br>
+    Surname:<br>
+    <input name='surname' value=""{{account.surname}}>
+    <br><br>  
+    Email:<br>
+    <input name='email' value=""{{account.email}}>
+    <br><br> 
+    <input type='submit' value="Submit">
+</form>       
+{% endblock %}
+
