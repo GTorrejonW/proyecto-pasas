@@ -1,0 +1,22 @@
+{% extends 'moledordepasas/base.html' %}
+
+{% load static %}
+{% block content %}
+<form action="register/" method="post">
+    {% csrf_token %}   
+    Name:<br>
+    <input name='name'>
+    <br><br>
+    Surname:<br>
+    <input name='surname'>
+    <br><br>  
+    Email:<br>
+    <input name='email'>
+    <br><br> 
+    Password:<br>
+    <input name='password'>
+    <br><br>     
+    <input type='submit' value="Submit">
+</form>       
+{% endblock %}
+
