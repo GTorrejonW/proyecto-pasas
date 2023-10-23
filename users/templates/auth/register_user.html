@@ -1,0 +1,27 @@
+{% extends 'moledordepasas/base.html' %}
+
+{% load static %}
+{% block content %}
+{% if form.errors %}
+<div class="alert alert-warning alert-dismissible fade show" role="alert">
+  <strong>Conchetumare!</strong> Hubo un error con los datos entregados
+  <button type="button" class="btn-close" data-dismiss="alert" aria-label="Close">
+  <span aria-hidden="true">&times;</span>
+  </button>
+</div>
+{% endif %}
+<thead>
+  <h1>Registrar</h1>
+</thead> 
+<form action="" method=POST>
+    {% csrf_token %}  
+
+    {{ form }}
+<button type="submit" class="btn btn-primary">Confirmar</button>   
+</form> 
+{% endblock %}
+
+ 
+
+
+

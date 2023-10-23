@@ -18,6 +18,16 @@
   <body>
     {% include 'moledordepasas/navbar.html' %}  
       <div class="container"> 
+        {% if messages %}
+          {% for message in messages %}            
+            <div class="alert alert-warning alert-dismissible fade show" role="alert">
+              <strong>Conchetumare!</strong> {{ message }}
+              <button type="button" class="btn-close" data-dismiss="alert" aria-label="Close">
+              <span aria-hidden="true">&times;</span>
+              </button>
+            </div>
+          {% endfor %}
+        {% endif %}
         {% block content %}
           <h1>Pasitas</h1>
         {% endblock %}

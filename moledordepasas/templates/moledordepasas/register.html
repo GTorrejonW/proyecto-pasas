@@ -2,7 +2,7 @@
 
 {% load static %}
 {% block content %}
-<form action="register/" method="post">
+<form action="redirect/" method="post">
     {% csrf_token %}   
     Name:<br>
     <input name='name'>
@@ -13,6 +13,9 @@
     Email:<br>
     <input name='email'>
     <br><br> 
+    Age:<br>
+    <input name='age'>
+    <br><br>   
     Password:<br>
     <input name='password'>
     <br><br>     

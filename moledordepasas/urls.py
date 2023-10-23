@@ -31,7 +31,7 @@ urlpatterns = [
     #change account
     path('database/accounts/change/<int:id>', views.putAccount, name='updateAccount'),
     #view account by id
-    path('database/accounts/change_register>/<int:id>', views.getAccount,name='updateRegister'),
+    path('database/accounts/change_register>/<int:id>', views.getAccount, name='updateRegister'),
     #delete
-    path('database/accounts/delete/<int:id>', views.deleteAccount,name='deleteAccount'),
+    path('database/accounts/delete/<int:id>', views.deleteAccount, name='deleteAccount'),
 ]

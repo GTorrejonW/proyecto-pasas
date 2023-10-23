@@ -1,0 +1,32 @@
+{% extends 'moledordepasas/base.html' %}
+
+{% load static %}
+{% block content %}
+<thead>
+    <h1>Login</h1>
+</thead> 
+<form action="" method=POST>
+    {% csrf_token %}
+    <div class="form-group">
+        <label for="exampleInputUsername">Nombre</label>
+        <input type="text" class="form-control" name="username" placeholder="Name">
+    </div>
+    <div class="form-group">
+      <label for="exampleInputEmail">Email</label>
+      <input type="email" class="form-control" name="email" aria-describedby="emailHelp" placeholder="Enter email">
+      <small id="emailHelp" class="form-text text-muted">Pancito con tomate</small>
+    </div>
+    <div class="form-group">
+      <label for="exampleInputPassword">Contraseña</label>
+      <input type="password" class="form-control" name="password" placeholder="Password">
+    </div>
+    <div class="form-check">
+    </div>
+    <button type="submit" class="btn btn-primary">Confirmar</button>
+</form> 
+{% endblock %}
+
+ 
+
+
+
