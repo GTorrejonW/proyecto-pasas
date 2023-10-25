@@ -1,0 +1,15 @@
+{% extends 'moledordepasas/base.html' %}
+
+{% load static %}
+{% block content %}  
+
+    <h1>{{ post.title }}</h1>
+    <small>Por: {{ post.author }}</small><br/>
+    <hr>
+    <br/>
+    {{ post.body|safe }}
+
+<br/><br/>
+<a href="{% url 'tutorials' %}">Back</a> 
+{% endblock %}
+

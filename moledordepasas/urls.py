@@ -16,6 +16,9 @@ Including another URLconf
 """
 from django.urls import path
 from . import views # importa las visitas de la app
+from .views import tutpage, tutdetailview, addtutview
+from django.conf import settings
+from django.conf.urls.static import static
 
 urlpatterns = [
     path('', views.index, name='index'), # define la url raiz ('') y la vista asociada (views.home)
@@ -34,4 +37,8 @@ urlpatterns = [
     path('database/accounts/change_register>/<int:id>', views.getAccount, name='updateRegister'),
     #delete
     path('database/accounts/delete/<int:id>', views.deleteAccount, name='deleteAccount'),
-]
+
+    path('tutorials', tutpage.as_view(), name='tutorials'),
+    path('tutorials/article/<int:pk>', tutdetailview.as_view(), name='tutsdet'),
+    path('tutorials/add_post', addtutview.as_view(), name='tutsadd'),
+]+ static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

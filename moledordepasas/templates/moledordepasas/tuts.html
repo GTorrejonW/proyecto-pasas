@@ -1,0 +1,12 @@
+{% extends 'moledordepasas/base.html' %}
+
+{% load static %}
+{% block content %}
+<ul>    
+{% for post in object_list %}
+    <li><a href="{% url 'tutsdet' post.pk %}">{{ post.title }}</a> - {{ post.author }}<br/></li>
+
+{% endfor %}
+</ul> 
+{% endblock %}
+

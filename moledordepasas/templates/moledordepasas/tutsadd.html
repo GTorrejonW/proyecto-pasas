@@ -1,0 +1,29 @@
+{% extends 'moledordepasas/base.html' %}
+{% block title %}Crea un tutorial{% endblock %}
+{% load static %}
+{% block content %}
+{% if form.errors %}
+<div class="alert alert-warning alert-dismissible fade show" role="alert">
+  <strong>Conchetumare!</strong> Hubo un error al crear
+  <button type="button" class="btn-close" data-dismiss="alert" aria-label="Close">
+  <span aria-hidden="true">&times;</span>
+  </button>
+</div>
+{% endif %}
+{% if user.is_authenticated %}
+<thead>
+  <h1>Crear Tutorial</h1>
+</thead> 
+<form action="" method=POST>
+    {% csrf_token %}  
+    {{ form.media }}
+    {{ form.as_p }}
+<button type="submit" class="btn btn-primary">Postear</button>  
+
+</form> 
+
+{% else %}
+No puedes hacer posts sin registrarte
+{% endif %}
+
+{% endblock %}
