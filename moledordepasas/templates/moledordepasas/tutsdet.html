@@ -4,7 +4,7 @@
 {% block content %}  
 
     <h1>{{ post.title }}</h1>
-    <small>Por: {{ post.author }}</small><br/>
+    <small>Por: {{ post.author }} - <a href="{% url 'tutsedit' post.pk %}">Editar</a></li> - <a href="{% url 'tutdelete' post.pk %}">Borrar</a></li></small><br/>
     <hr>
     <br/>
     {{ post.body|safe }}
@@ -12,4 +12,5 @@
 <br/><br/>
 <a href="{% url 'tutorials' %}">Back</a> 
 {% endblock %}
+
 

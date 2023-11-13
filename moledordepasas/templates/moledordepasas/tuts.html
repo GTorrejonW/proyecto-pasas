@@ -4,7 +4,7 @@
 {% block content %}
 <ul>    
 {% for post in object_list %}
-    <li><a href="{% url 'tutsdet' post.pk %}">{{ post.title }}</a> - {{ post.author }}<br/></li>
+    <li><a href="{% url 'tutsdet' post.pk %}">{{ post.title }}</a> - {{ post.author }} - <a href="{% url 'tutsedit' post.pk %}">Editar</a></li> - <a href="{% url 'tutdelete' post.pk %}">Borrar</a></li>
 
 {% endfor %}
 </ul> 

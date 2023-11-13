@@ -10,8 +10,10 @@ from django.template.loader import get_template
 from django.urls import reverse
 from django.utils import timezone
 from django.views.decorators.http import require_GET, require_POST
-from django.views.generic import ListView, DetailView, CreateView
+from django.views.generic import ListView, DetailView, CreateView, UpdateView, DeleteView
 from .models import Post
+from moledordepasas.forms import PostForm
+from django.urls import reverse_lazy
 
 
 # Create your views here.
@@ -27,6 +29,7 @@ def database(request):
 class tutpage(ListView):
     model = Post
     template_name = 'moledordepasas/tuts.html'
+    ordering = ['-id']
 
 class tutdetailview(DetailView):
     model = Post
@@ -34,12 +37,24 @@ class tutdetailview(DetailView):
 
 class addtutview(CreateView):
     model = Post
+    form_class = PostForm
     template_name = 'moledordepasas/tutsadd.html' 
     #fields = '__all__' 
-    fields =  ('title', 'body', 'author')  
+    #fields =  ('title', 'body', 'author')  
     #find a way to avoid nullconstant with author on automatic detection 
 
+class updatetutview(UpdateView):
+    model = Post
+    form_class = PostForm
+    template_name = 'moledordepasas/tutsedit.html' 
+    #fields = '__all__' 
+    #fields =  ('title', 'body', 'author')  
+    #find a way to avoid nullconstant with author on automatic detection 
 
+class tutdelete(DeleteView):
+    model = Post
+    template_name = 'moledordepasas/tutdelete.html'    
+    success_url = reverse_lazy('tutorials')   
 
 def input(request):
     plantilla = get_template('moledordepasas/register.html')

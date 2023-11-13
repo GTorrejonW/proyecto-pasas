@@ -15,6 +15,7 @@ class Account(models.Model):
 
 class Post(models.Model):
     title = models.CharField(max_length=200)
+    #titletag = models.CharField(max_length=200, default="Tutoriales")
     author = models.ForeignKey(User, on_delete=models.CASCADE) 
     body = RichTextField(blank=True, null=True)
     #image = models.ImageField(null =True, blank=True)

@@ -1,5 +1,5 @@
 {% extends 'moledordepasas/base.html' %}
-{% block title %}Crea un tutorial{% endblock %}
+{% block title %}Edita un tutorial{% endblock %}
 {% load static %}
 {% block content %}
 {% if form.errors %}
@@ -12,16 +12,15 @@
 {% endif %}
 {% if user.is_authenticated %}
 <thead>
-  <h1>Crear Tutorial</h1>
+  <h1>Editar Tutorial</h1>
 </thead> 
 <div class="form-group">
 <form action="" method=POST>
     {% csrf_token %}  
     {{ form.media }}
     {{ form.as_p }}
-<button type="submit" class="btn btn-primary">Postear</button>  
+<button type="submit" class="btn btn-primary">Actualizar</button>  
 </div>
-
 </form> 
 
 {% else %}
