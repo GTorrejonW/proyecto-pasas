@@ -16,7 +16,7 @@ Including another URLconf
 """
 from django.urls import path
 from . import views # importa las visitas de la app
-from .views import tutpage, tutdetailview, addtutview, updatetutview, tutdelete
+from .views import tutpage, tutdetailview, addtutview, updatetutview, tutdelete, tutlike 
 from django.conf import settings
 from django.conf.urls.static import static
 
@@ -43,4 +43,5 @@ urlpatterns = [
     path('tutorials/add_post', addtutview.as_view(), name='tutsadd'),
     path('tutorials/edit_post<int:pk>', updatetutview.as_view(), name='tutsedit'),
     path('tutorials/<int:pk>/erase', tutdelete.as_view(), name='tutdelete'),
+    path('like/<int:pk>', tutlike, name='tutlike'),
 ]+ static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

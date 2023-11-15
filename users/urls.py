@@ -20,5 +20,5 @@ from . import views # importa las visitas de la app
 urlpatterns = [
     path('login_user', views.login_user, name='login'), 
     path('logout_user', views.logout_user, name='logout'), 
-    path('register_user', views.register_user, name='register_user'), 
+    path('register_user', views.UserRegisterView.as_view(), name='register_user'), 
 ]

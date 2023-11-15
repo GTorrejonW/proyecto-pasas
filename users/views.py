@@ -12,6 +12,15 @@ from django.template.loader import get_template
 from django.urls import reverse
 from django.utils import timezone
 from django.views.decorators.http import require_GET, require_POST
+from django import forms
+from .forms import SignUpForm
+from django.urls import reverse_lazy
+from django.views import generic
+
+class UserRegisterView(generic.CreateView):
+        form_class = SignUpForm
+        template_name = "auth/register_user.html"
+        success_url = reverse_lazy('index')
 
 def login_user(request):
     if request.method == "POST":
@@ -33,7 +42,11 @@ def logout_user(request):
     messages.success(request, ("Sesión cerrada"))    
     return redirect('index')
 
-def register_user(request):
+
+  
+
+
+#def register_user(request):
   
     if request.method == "POST":
         form = UserCreationForm(request.POST)

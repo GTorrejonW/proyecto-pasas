@@ -18,7 +18,11 @@ class Post(models.Model):
     #titletag = models.CharField(max_length=200, default="Tutoriales")
     author = models.ForeignKey(User, on_delete=models.CASCADE) 
     body = RichTextField(blank=True, null=True)
+    likes = models.ManyToManyField(User, related_name='tutorial')
     #image = models.ImageField(null =True, blank=True)
+
+    def total_likes(self):
+        return self.likes.count()
     
     def __str__(self):
         return self.title + '|' + str(self.author)

@@ -11,18 +11,23 @@
 </div>
 {% endif %}
 {% if user.is_authenticated %}
-<thead>
-  <h1>Borrar Tutorial</h1>
-  <h3>Borrar {{ post.title }}</h3>
-</thead> 
-<div class="form-group">
-<form action="" method=POST>
-    {% csrf_token %}  
-    {{ form.media }}
-    <strong>¿Realmente quieres borrar este tutorial?</strong>
-<button type="submit" class="btn btn-primary">Borrar</button>  
-</div>
-</form> 
+  {% if user.id == post.author.id %}
+    <thead>
+      <h1>Borrar Tutorial</h1>
+      <h3>Borrar {{ post.title }}</h3>
+    </thead> 
+    <div class="form-group">
+    <form action="" method=POST>
+        {% csrf_token %}  
+        {{ form.media }}
+        <strong>¿Realmente quieres borrar este tutorial?</strong>
+    <button type="submit" class="btn btn-primary">Borrar</button>  
+    </div>
+    </form> 
+  {% else %} 
+  <h1>Ni se te ocurra</h1>
+  <img src="{% static '/img/I-2563.jpg' %}"/> 
+  {% endif %}
 
 {% else %}
 No puedes hacer posts sin registrarte

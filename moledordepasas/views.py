@@ -1,3 +1,4 @@
+from typing import Any
 from django.shortcuts import render
 from .models import Account
 from django.http import FileResponse
@@ -7,13 +8,12 @@ from django.contrib import messages
 from django.http import JsonResponse, HttpResponse
 from django.shortcuts import render, get_object_or_404, redirect
 from django.template.loader import get_template
-from django.urls import reverse
+from django.urls import reverse, reverse_lazy
 from django.utils import timezone
 from django.views.decorators.http import require_GET, require_POST
 from django.views.generic import ListView, DetailView, CreateView, UpdateView, DeleteView
 from .models import Post
 from moledordepasas.forms import PostForm
-from django.urls import reverse_lazy
 
 
 # Create your views here.
@@ -29,11 +29,23 @@ def database(request):
 class tutpage(ListView):
     model = Post
     template_name = 'moledordepasas/tuts.html'
-    ordering = ['-id']
+    ordering = ['likes']
 
 class tutdetailview(DetailView):
     model = Post
-    template_name = 'moledordepasas/tutsdet.html'   
+    template_name = 'moledordepasas/tutsdet.html'
+
+    def get_context_data(self, *args, **kwargs):
+        context = super(tutdetailview, self).get_context_data(*args, **kwargs)
+
+        stuff = get_object_or_404(Post, id=self.kwargs['pk'])  
+        total_likes = stuff.total_likes()     
+        liked = False
+        if stuff.likes.filter(id=self.request.user.id).exists():
+            liked = True
+        context["total_likes"] = total_likes
+        context["liked"] = liked
+        return context 
 
 class addtutview(CreateView):
     model = Post
@@ -55,6 +67,18 @@ class tutdelete(DeleteView):
     model = Post
     template_name = 'moledordepasas/tutdelete.html'    
     success_url = reverse_lazy('tutorials')   
+
+def tutlike(request, pk):
+    post = get_object_or_404(Post, id=request.POST.get('post_id'))
+    liked = False
+    if post.likes.filter(id=request.user.id).exists():
+        post.likes.remove(request.user)
+        liked = False
+    else:    
+        post.likes.add(request.user)
+        liked = True
+    return HttpResponseRedirect(reverse('tutsdet', args=[str(pk)]))
+
 
 def input(request):
     plantilla = get_template('moledordepasas/register.html')

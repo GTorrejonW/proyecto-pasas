@@ -11,20 +11,25 @@
 </div>
 {% endif %}
 {% if user.is_authenticated %}
-<thead>
-  <h1>Editar Tutorial</h1>
-</thead> 
-<div class="form-group">
-<form action="" method=POST>
-    {% csrf_token %}  
-    {{ form.media }}
-    {{ form.as_p }}
-<button type="submit" class="btn btn-primary">Actualizar</button>  
-</div>
-</form> 
-
+  {% if user.id == post.author.id %} 
+    <thead>
+      <h1>Editar Tutorial</h1>
+    </thead> 
+    <div class="form-group">
+    <form action="" method=POST>
+        {% csrf_token %}  
+        {{ form.media }}
+        {{ form.as_p }}
+    <button type="submit" class="btn btn-primary">Actualizar</button>  
+    </div>
+    </form> 
+  {% else %} 
+  <h1>No</h1>
+  <img src="{% static '/img/I-2563.jpg' %}"/> 
+  {% endif %} 
 {% else %}
-No puedes hacer posts sin registrarte
+<h1>Como te metiste aca</h1>
+<img src="{% static '/img/I-2563.jpg' %}"/>  
 {% endif %}
 
 {% endblock %}
