@@ -4,7 +4,7 @@
 {% block content %}  
 
     <h1>{{ post.título }}</h1>
-    <small>Por: {{ post.autor }} - {{ post.autor.id }}
+    <small>Por: {{ post.autor }}
     {% if user.is_authenticated %}    
         {% if user.id == post.autor.id %}  
             - <a href="{% url 'tutsedit' post.pk %}">Editar</a></li>  
@@ -24,8 +24,12 @@
     <button type="submit", name="post_id",
     value="{{post.id}}", class= "btn btn-primary brn-sm">Unlike</button> 
 {% else %}
+    {% if user.is_authenticated %}   
     <button type="submit", name="post_id",
     value="{{post.id}}", class= "btn btn-primary brn-sm">Like</button> 
+    {% else %}  
+    <button type="button", class= "btn btn-secondary brn-sm">Necesitas iniciar sesión para dar like</button>
+    {% endif %}
 {% endif %}
 - {{ total_likes }} Likes</a>
 <br/>

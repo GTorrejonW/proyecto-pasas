@@ -11,10 +11,10 @@
           <a class="nav-link active" aria-current="page" href="{% url 'index' %}">Home</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" href="{% url 'about' %}">About</a>
+          <a class="nav-link" href="{% url 'about' %}">Sobre la página</a>
         </li> 
         <li class="nav-item dropdown">
-          <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">Database</a>
+          <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">Tutoriales</a>
           <ul class="dropdown-menu">
             <li><a class="dropdown-item" href="{% url 'tutorials' %}">Tutoriales</a></li>
             <li><a class="dropdown-item" href="{% url 'tutsadd' %}">Crear Tutoriales</a></li>
@@ -22,14 +22,14 @@
         </li>
       {% if user.is_authenticated %}
         <li class="nav-item">
-          <a class="nav-link" href="{% url 'logout' %}">Logout</a>
+          <a class="nav-link" href="{% url 'logout' %}">Cerrar sesión</a>
         </li>      
         <li class="nav-item">
           <a class="nav-link disabled" aria-disabled="true">{{ user.username }}</a>
         </li>
       {% else %}
         <li class="nav-item">
-          <a class="nav-link" href="{% url 'login' %}">Login</a>
+          <a class="nav-link" href="{% url 'login' %}">Iniciar sesión</a>
         </li>
         <li class="nav-item">
           <a class="nav-link" href="{% url 'register_user' %}">Registrarse</a>
