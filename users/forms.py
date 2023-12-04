@@ -2,6 +2,8 @@ from typing import Any
 from django.contrib.auth.models import User
 from django.contrib.auth.forms import UserCreationForm
 from django import forms
+from django.contrib.auth import authenticate
+ 
 
 
 class SignUpForm(UserCreationForm):
@@ -20,3 +22,17 @@ class SignUpForm(UserCreationForm):
         self.fields['username'].widget.attrs['class'] = 'form-control'
         self.fields['password1'].widget.attrs['class'] = 'form-control'
         self.fields['password2'].widget.attrs['class'] = 'form-control'
+
+    def clean(self):
+
+            cleaned_data = super(User, self).clean()
+            user         = cleaned_data.get("username")
+
+            # Now you get the user
+            self.user_cache = authenticate(username=user,)
+            # Do other stuff
+            return self.cleaned_data
+
+        # Function to return user in views
+    def get_user(self):
+            return self.user_cache      

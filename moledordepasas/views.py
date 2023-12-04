@@ -13,6 +13,11 @@ from django.utils import timezone
 from django.views.decorators.http import require_GET, require_POST
 from django.views.generic import ListView, DetailView, CreateView, UpdateView, DeleteView
 from .models import Post
+from django import forms
+from .models import Post 
+from django.contrib.auth.models import User
+from django.contrib.auth.forms import UserCreationForm
+from moledordepasas import views
 from moledordepasas.forms import PostForm
 
 
@@ -45,14 +50,27 @@ class tutdetailview(DetailView):
             liked = True
         context["total_likes"] = total_likes
         context["liked"] = liked
-        return context 
+        return context
+     
+  
 
 class addtutview(CreateView):
     model = Post
     form_class = PostForm
     template_name = 'moledordepasas/tutsadd.html' 
+    def form_valid(self, form):
+        #Set the form's author to the submitter if the form is valid
+        form.instance.autor = self.request.user
+        super().form_valid(form)
+        return HttpResponseRedirect(reverse('tutorials'))
+
+    #def get_form_kwargs(self, *args, **kwargs):
+        #kwargs = super().get_form_kwargs(*args, **kwargs)
+        #kwargs['name'] = self.request.user.username
+        #return kwargs
+    
     #fields = '__all__' 
-    #fields =  ('title', 'body', 'autor')  
+    #fields =  ('título', 'cuerpo')  
     #find a way to avoid nullconstant with author on automatic detection 
 
 class updatetutview(UpdateView):
@@ -60,8 +78,11 @@ class updatetutview(UpdateView):
     form_class = PostForm
     template_name = 'moledordepasas/tutsedit.html' 
     #fields = '__all__' 
-    #fields =  ('title', 'body', 'autor')  
+    #fields =  ('title', 'body')  
     #find a way to avoid nullconstant with author on automatic detection 
+
+
+
 
 class tutdelete(DeleteView):
     model = Post

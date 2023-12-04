@@ -3,6 +3,9 @@ from django.contrib.auth.models import User
 from django.urls import reverse
 from ckeditor.fields import RichTextField
 from ckeditor.fields import CKEditorWidget
+from django.shortcuts               import render
+from django.template                import RequestContext
+from django.contrib.auth            import authenticate, login
 
 # Create your models here.
 
@@ -16,7 +19,7 @@ class Account(models.Model):
 class Post(models.Model):
     título = models.CharField(max_length=200)
     #titletag = models.CharField(max_length=200, default="Tutoriales")
-    autor = models.ForeignKey(User, on_delete=models.CASCADE) 
+    autor = models.ForeignKey(User, null=True, blank=True, on_delete=models.CASCADE) 
     cuerpo = RichTextField(blank=True, null=True)
     likes = models.ManyToManyField(User, related_name='tutorial')
     #image = models.ImageField(null =True, blank=True)

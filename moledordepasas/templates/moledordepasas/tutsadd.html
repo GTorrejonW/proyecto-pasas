@@ -18,6 +18,7 @@
 <form action="" method=POST>
     {% csrf_token %}  
     {{ form.media }}
+    {{ form.autor }}
     {{ form.as_p }}
 <button type="submit" class="btn btn-primary">Postear</button>  
 </div>
