@@ -37,8 +37,9 @@ urlpatterns = [
     path('database/accounts/change_register>/<int:id>', views.getAccount, name='updateRegister'),
     #delete
     path('database/accounts/delete/<int:id>', views.deleteAccount, name='deleteAccount'),
-
+    
     path('tutorials', tutpage.as_view(), name='tutorials'),
+    path('tutorials/search', views.search, name='search'),
     path('tutorials/article/<int:pk>', tutdetailview.as_view(), name='tutsdet'),
     path('tutorials/add_post', addtutview.as_view(), name='tutsadd'),
     path('tutorials/edit_post<int:pk>', updatetutview.as_view(), name='tutsedit'),

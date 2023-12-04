@@ -3,20 +3,20 @@
 {% load static %}
 {% block content %}  
 
-    <h1>{{ post.title }}</h1>
-    <small>Por: {{ post.author }} - {{ post.author.id }}
+    <h1>{{ post.título }}</h1>
+    <small>Por: {{ post.autor }} - {{ post.autor.id }}
     {% if user.is_authenticated %}    
-        {% if user.id == post.author.id %}  
+        {% if user.id == post.autor.id %}  
             - <a href="{% url 'tutsedit' post.pk %}">Editar</a></li>  
             - <a href="{% url 'tutdelete' post.pk %}">Borrar</a></li></small><br/>
         {% endif %}    
     {% endif %}    
     <hr>
     <br/>
-    {{ post.body|safe }}
+    {{ post.cuerpo|safe }}
 
 <br/><br/>
-<a href="{% url 'tutorials' %}">Back</a> 
+ 
 <br/><br/>
 <form action="{% url 'tutlike' post.pk %}"method="POST">
 {% csrf_token %}
@@ -27,8 +27,9 @@
     <button type="submit", name="post_id",
     value="{{post.id}}", class= "btn btn-primary brn-sm">Like</button> 
 {% endif %}
-- {{ total_likes }} Likes</a> 
-
+- {{ total_likes }} Likes</a> <li>
+<a href="{% url 'tutorials' %}">Volver atrás</a> </li>
+<li></li>
 {% endblock %}
 
 

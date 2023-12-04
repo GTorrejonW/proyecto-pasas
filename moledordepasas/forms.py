@@ -5,12 +5,12 @@ from .models import Post
 class PostForm(forms.ModelForm):
     class Meta:
         model = Post
-        fields = ('title', 'author', 'body')
+        fields = ('título', 'autor', 'cuerpo')
         widgets = {
-            'title' : forms.TextInput(attrs={'class':'form-control', 'placeholder': 'Aqui va el título'}),
+            'título' : forms.TextInput(attrs={'class':'form-control', 'placeholder': 'Aqui va el título'}),
             #'titletag' : forms.TextInput(attrs={'class':'form-control'}),
-            'author' : forms.Select(attrs={'class':'form-control'}),
-            'body' : forms.Textarea(attrs={'class':'form-control'}),
+            'autor' : forms.Select(attrs={'class':'form-control'}),
+            'cuerpo' : forms.Textarea(attrs={'class':'form-control'}),
         }
 
 

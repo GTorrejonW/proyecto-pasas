@@ -52,7 +52,7 @@ class addtutview(CreateView):
     form_class = PostForm
     template_name = 'moledordepasas/tutsadd.html' 
     #fields = '__all__' 
-    #fields =  ('title', 'body', 'author')  
+    #fields =  ('title', 'body', 'autor')  
     #find a way to avoid nullconstant with author on automatic detection 
 
 class updatetutview(UpdateView):
@@ -60,7 +60,7 @@ class updatetutview(UpdateView):
     form_class = PostForm
     template_name = 'moledordepasas/tutsedit.html' 
     #fields = '__all__' 
-    #fields =  ('title', 'body', 'author')  
+    #fields =  ('title', 'body', 'autor')  
     #find a way to avoid nullconstant with author on automatic detection 
 
 class tutdelete(DeleteView):
@@ -128,3 +128,11 @@ def deleteAccount(request,id):
     account = Account.objects.get(id=id)
     account.delete()
     return HttpResponseRedirect(reverse('getAccount')) 
+
+def search(request):
+    if request.method == "POST":
+        searched = request.POST.get('searched', False)
+        results = Post.objects.filter(título__icontains=searched)
+        return render(request, 'moledordepasas/tutsearch.html',{'searched':searched, 'results':results}) 
+    else:
+        return render(request, 'moledordepasas/tutsearch.html',{}) 

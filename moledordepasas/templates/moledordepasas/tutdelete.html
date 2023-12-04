@@ -1,5 +1,5 @@
 {% extends 'moledordepasas/base.html' %}
-{% block title %}Borra un tutorial{% endblock %}
+{% block título %}Borra un tutorial{% endblock %}
 {% load static %}
 {% block content %}
 {% if form.errors %}
@@ -11,10 +11,10 @@
 </div>
 {% endif %}
 {% if user.is_authenticated %}
-  {% if user.id == post.author.id %}
+  {% if user.id == post.autor.id %}
     <thead>
       <h1>Borrar Tutorial</h1>
-      <h3>Borrar {{ post.title }}</h3>
+      <h3>Borrar {{ post.título }}</h3>
     </thead> 
     <div class="form-group">
     <form action="" method=POST>

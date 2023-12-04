@@ -14,10 +14,10 @@ class Account(models.Model):
     age = models.IntegerField()
 
 class Post(models.Model):
-    title = models.CharField(max_length=200)
+    título = models.CharField(max_length=200)
     #titletag = models.CharField(max_length=200, default="Tutoriales")
-    author = models.ForeignKey(User, on_delete=models.CASCADE) 
-    body = RichTextField(blank=True, null=True)
+    autor = models.ForeignKey(User, on_delete=models.CASCADE) 
+    cuerpo = RichTextField(blank=True, null=True)
     likes = models.ManyToManyField(User, related_name='tutorial')
     #image = models.ImageField(null =True, blank=True)
 
@@ -25,7 +25,7 @@ class Post(models.Model):
         return self.likes.count()
     
     def __str__(self):
-        return self.title + '|' + str(self.author)
+        return self.titulo + '|' + str(self.autor)
     
     def get_absolute_url(self):
         #return reverse('tutsdet', args=(str(self.id)))

@@ -1,5 +1,5 @@
 {% extends 'moledordepasas/base.html' %}
-{% block title %}Edita un tutorial{% endblock %}
+{% block título %}Edita un tutorial{% endblock %}
 {% load static %}
 {% block content %}
 {% if form.errors %}
@@ -11,7 +11,7 @@
 </div>
 {% endif %}
 {% if user.is_authenticated %}
-  {% if user.id == post.author.id %} 
+  {% if user.id == post.autor.id %} 
     <thead>
       <h1>Editar Tutorial</h1>
     </thead> 

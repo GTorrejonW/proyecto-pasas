@@ -5,12 +5,12 @@
 <ul>    
 {% for post in object_list %}
     <li><a href="{% url 'tutsdet' post.pk %}">
-        {{ post.title }}</a> - 
-        {{ post.author }}  
+        {{ post.título }}</a> - 
+        {{ post.autor }}  
         {% if user.is_authenticated %}
-            {% if user.id == post.author.id %}
+            {% if user.id == post.autor.id %}
                 - <a href="{% url 'tutsedit' post.pk %}">Editar</a>  
-                - <a href="{% url 'tutdelete' post.pk %}">Borrar</a></li><br/>
+                - <a href="{% url 'tutdelete' post.pk %}">Borrar</a><br/>
             {% endif %}
         {% endif %}
 {% endfor %}
