@@ -10,6 +10,9 @@ For the full list of settings and their values, see
 https://docs.djangoproject.com/en/4.2/ref/settings/
 """
 
+import locale
+locale._getdefaultlocale = (lambda *args: ['en_US', 'utf8'])
+
 from pathlib import Path
 import os 
 
